@@ -15,16 +15,16 @@ async function main() {
   const NAME = "ETH Daddy"
   const SYMBOL = "ETHD"
 
-
+  console.log(deployer)
   const ETHDaddy = await ethers.getContractFactory("ETHDaddy")
   const ethDaddy = await ETHDaddy.deploy(NAME, SYMBOL)
   await ethDaddy.deployed();
 
-  console.log(`Deployed Domain Contract at : ${ethDaddy.address}`)
 
   const names = ["Jack.eth", "Priyank.eth", "Harsh.eth", "Parth.eth", "Patel.eth", "Ryan.eth"]
   const costs = [tokens(10), tokens(25), tokens(15), tokens(20), tokens(15), tokens(22)]
 
+  console.log(`Deployed Domain Contract at : ${ethDaddy.address}`)
 
   for (var i = 0; i < 6; i++) {
     const transaction = await ethDaddy.connect(deployer).list(names[i], costs[i])
